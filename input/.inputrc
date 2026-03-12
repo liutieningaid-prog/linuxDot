@@ -1,0 +1,3 @@
+
+Control-f: "fzf /n"
+Control-v: "vim \C-f"
