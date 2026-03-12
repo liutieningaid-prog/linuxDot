@@ -1,0 +1,71 @@
+continuation_prompt = "[❯](bold white)"
+
+format = """
+$container$username$hostname$jobs\
+$localip$shlvl$singularity$kubernetes\
+$directory$battery\
+$vcsh\
+$git_branch$git_commit$git_state$git_metrics$git_status$hg_branch\
+$docker_context$package$buf$c$cmake$cobol$dart$deno$dotnet$elixir$elm$erlang$golang$haskell$helm$java$julia$kotlin$lua$nim$nodejs$ocaml$perl$php$pulumi$purescript$python$rlang$red$ruby$rust$scala$swift$terraform$vlang$vagrant$zig$nix_shell$conda$spack$memory_usage$aws$gcloud$openstack$azure$env_var$crystal$custom\
+$sudo\
+$cmd_duration\
+$time\
+$line_break\
+$status\
+$shell\
+$character"""
+
+
+
+
+[container]
+symbol = ""
+format = "[$symbol](bg:#FF5655)"
+
+[username]
+style_user = "#282A36 bold"
+style_root = "#FF5655 bold"
+# format = "[ $user](fg:$style bg:#6273A4)"
+format = "[](fg:$style bg:#F8F8F2)[$user](fg:$style bg:#F8F8F2)"
+disabled = false
+show_always = true
+[hostname]
+ssh_only = false
+# format =  "[ @ $hostname ](fg:#F1FA8C bg:#6273A4)[](fg:#6273A4 bg:#ffb86c)"
+format =  "[  $hostname ](fg:#282A36 bg:#F8F8F2)[](fg:#ffb86c bg:#F8F8F2)"
+trim_at = "."
+disabled = false
+
+[jobs]
+symbol = "✦"
+style = "fg:blue bg:#ffb86c"
+number_threshold = 2
+symbol_threshold = 1
+format = "[$symbol$number]($style)"
+
+[directory]
+home_symbol="~"
+truncation_length=5
+read_only=""
+read_only_style="fg:#F8F8F2"
+# format="[ $read_only]($read_only_style bg:#ffb86c)[📂 $path ](fg:#282a36 bg:#ffb86c)[](fg:#ffb86c) "
+format="[$read_only]($read_only_style bg:#ffb86c)[ 📂 $path ](fg:#282a36 bg:#ffb86c)[](fg:#ffb86c) "
+
+[battery]
+full_symbol = "🔋 "
+# charging_symbol = "⚡️ "
+discharging_symbol = "💧 "
+# format = "[$symbol$percentage]($style) "
+format = "[$symbol]($style) "
+disabled = false
+[[battery.display]]
+threshold = 10
+style = "bold red"
+discharging_symbol = ""
+
+
+[character]
+success_symbol="[❯](bold green)"
+error_symbol="[❯](bold red)"
+vicmd_symbol="[❮](bold green)"
+format="[In\\[$symbol\\]=:](fg:#f1fa8c)"

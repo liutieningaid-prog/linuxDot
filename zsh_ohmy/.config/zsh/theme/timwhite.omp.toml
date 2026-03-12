@@ -1,0 +1,174 @@
+"$schema" = "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json"
+console_title_template = "{{if .Root}}[root] {{end}}{{.Shell}} in <{{.Folder}}>"
+version = 3
+final_space = true
+
+[palette]
+black = "#111111"
+white = "#f7f7f7"
+
+[[blocks]]
+type = "prompt"
+alignment = "left"
+newline = true
+
+
+    [[blocks.segments]]
+    style = "powerline"
+    type = "node"
+    # 模板解释：显示 node 图标，版本号，如果识别到 pnpm-lock.yaml 则显示 pnpm 图标
+    template = "  {{ .Full }}{{ if .PackageManagerIcon }} {{ .PackageManagerIcon }}{{ end }} "
+    foreground = "p:white"
+    background = "#689F63"
+
+    [blocks.segments.properties]
+        cache_duration = "none"
+        display_mode = "files" # 仅在有 package.json, node_modules 或相关锁文件时显示
+        fetch_package_manager = true # 识别 pnpm/npm/yarn
+        home_enabled = false
+
+    [[blocks.segments]]
+    style = "powerline"
+    type = "python"
+    template = "  : {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }} "
+    foreground = "p:white"
+    background = "#306998"
+    # powerline_symbol = ""
+
+        [blocks.segments.properties]
+        cache_duration = "none"
+        display_mode = "context"
+        fetch_virtual_env = true
+        home_enabled = false
+
+[[blocks]]
+type = "prompt"
+alignment = "left"
+newline = true
+
+    [[blocks.segments]]
+    template = "{{.Icon}}{{if .WSL}} (WSL){{end}} "
+    foreground = "p:white"
+    background = "#464646"
+    type = "os"
+    style = "plain"
+
+        [blocks.segments.properties]
+        cache_duration = "none"
+        linux = " "
+        macos = " "
+        ubuntu = " "
+        windows = "W"
+
+    [[blocks.segments]]
+    template = " {{.Name}} "
+    foreground = "#CB4B16"
+    background = "p:white"
+    type = "shell"
+    style = "plain"
+
+        [blocks.segments.properties]
+        cache_duration = "none"
+
+    [[blocks.segments]]
+    template = " {{.UserName}} "
+    foreground = "p:black"
+    background = "#ffe093"
+    type = "session"
+    style = "plain"
+
+        [blocks.segments.properties]
+        cache_duration = "none"
+
+    [[blocks.segments]]
+    template = '{{ if not (contains "/home" .Env.PWD)}}  {{ end }} {{.Path}} '
+    foreground = "p:white"
+    background = "#0CA0D8"
+    # background_templates = ["{{if .Writable}}#0CA0D8{{else}}#CB4B16{{end}}"]
+    type = "path"
+    style = "powerline"
+
+        [blocks.segments.properties]
+        cache_duration = "none"
+        folder_icon = " "
+        folder_separator_template = "<#93d0ff> » </>"
+        home_icon = " "
+
+    [[blocks.segments]]
+    template = " {{ if not .Error }}{{ .Icon }}{{ .Percentage  }}%{{ end }} "
+    foreground = "#193549"
+    background = "#cfd7ee"
+    type = "battery"
+    style = "diamond"
+    background_templates = [ "{{if eq \"Charging\" .State.String}}#40c4ff{{end}}", "{{if eq \"Discharging\" .State.String}}#cfd7ee{{end}}", "{{if eq \"Full\" .State.String}}#b3e5ee{{end}}" ]
+
+        [blocks.segments.properties]
+        cache_duration = "none"
+        charged_icon = "󱟢 "
+        charging_icon = "󰂄 "
+        discharging_icon = "󰂃 "
+
+    [[blocks.segments]]
+    template = " {{ .UpstreamIcon }} {{ .HEAD }} {{ .BranchStatus }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }} "
+    foreground = "#011627"
+    powerline_symbol = ""
+    background = "#22da6e"
+    type = "git"
+    style = "accordion"
+    background_templates = [ "{{ if or (.Working.Changed) (.Staging.Changed) }}#addb67{{ end }}",
+                             "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#f78c6c{{ end }}",
+                             "{{ if gt .Ahead 0 }}#21c7a8{{ end }}",
+                             "{{ if gt .Behind 0 }}#c792ea{{ end }}",
+                             "#22da6e"]
+
+        [blocks.segments.properties]
+        branch_icon = " "
+        cache_duration = "none"
+        fetch_stash_count = true
+        fetch_status = true
+        fetch_upstream_icon = true
+        fetch_worktree_count = true
+
+[[blocks]]
+type = "prompt"
+alignment = "right"
+
+    [[blocks.segments]]
+    template = "{{.FormattedMs}}"
+    foreground = "#b3ffde"
+    background = "transparent"
+    type = "executiontime"
+    style = "plain"
+
+        [blocks.segments.properties]
+        cache_duration = "none"
+        style = "austin"
+        threshold = 0
+
+    [[blocks.segments]]
+    template = "<p:white> · </>{{.CurrentDate | date .Format}}"
+    foreground = "#b3ffde"
+    background = "transparent"
+    type = "time"
+    style = "plain"
+
+        [blocks.segments.properties]
+        cache_duration = "none"
+        time_format = "2006/01/02 15:04"
+
+[[blocks]]
+type = "prompt"
+alignment = "left"
+newline = true
+
+    [[blocks.segments]]
+    template = ">>"
+    foreground = "#81ff91"
+    background = "transparent"
+    type = "exit"
+    style = "plain"
+    foreground_templates = [ "{{if gt .Code 0}}#ff3030{{end}}" ]
+
+        [blocks.segments.properties]
+        always_enabled = true
+        cache_duration = "none"

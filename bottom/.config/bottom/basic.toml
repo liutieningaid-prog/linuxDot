@@ -1,0 +1,5 @@
+[flags]
+mem_as_value = true
+color = "gruvbox"
+# hide_avg_cpu = true
+basic = true

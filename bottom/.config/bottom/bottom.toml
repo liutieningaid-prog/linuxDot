@@ -1,0 +1,19 @@
+[[row]]
+  ratio=3
+  [[row.child]]
+  type="proc"
+[[row]]
+  ratio=1
+  [[row.child]]
+  ratio=2
+  type="mem"
+  [[row.child]]
+  ratio=1
+  type="battery"
+
+[flags]
+mem_as_value = true
+hide_table_gap = true
+color = "gruvbox"
+# hide_avg_cpu = true
+# basic = true

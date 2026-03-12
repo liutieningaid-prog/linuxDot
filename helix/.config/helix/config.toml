@@ -1,0 +1,4 @@
+theme = "transparent"
+
+[editor]
+line-number = "relative"

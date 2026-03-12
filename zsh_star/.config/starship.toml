@@ -1,0 +1,161 @@
+continuation_prompt = "[❯](bold white)"
+
+format = """
+[](bg:#c4265e fg:#ae81ff)\
+$localip$hostname$username\
+[](bg:#212736 fg:#c4265e)\
+$container\
+$nodejs\
+$rust\
+$golang\
+$php\
+$python\
+$conda\
+[](fg:#212736 bg:#a3aed2)\
+[](fg:#a3aed2 bg:#ff8000)\
+$battery$custom\
+[ ](fg:#ff8000)\
+$docker_context$package$buf$c$cmake$cobol$dart$deno$dotnet$elixir$elm$erlang$haskell$helm$java$julia$kotlin$lua$nim$ocaml$perl$pulumi$purescript$rlang$red$ruby$scala$swift$terraform$vlang$vagrant$zig$nix_shell$spack$memory_usage$aws$gcloud$openstack$azure$env_var$crystal\
+
+\n\
+[  ](bg:#a3aed2 fg:#090c0c)\
+[](bg:#769ff0 fg:#a3aed2)\
+$directory\
+[](fg:#769ff0 bg:#394260)\
+$git_branch\
+$git_status\
+[](fg:#394260 bg:#1d2230)\
+$time\
+[ ](fg:#1d2230)\
+
+\n\
+$character"""
+right_format = '''$jobs$cmd_duration'''
+
+# first -------------------------------------------------------------------------------------
+[custom.aabb]
+symbol = "🔋"
+style  = "fg:#e3e5e5 bg:#ff8000"
+format  = '[($output)%]($style)'
+command = 'cat /sys/class/power_supply/battery/capacity'
+use_stdin = true
+detect_folders = ['.config']
+
+[localip]
+style = "fg:#e3e5e5 bg:#c4265e"
+ssh_only = false
+format = '[  $localipv4 ]($style)'
+disabled = false
+
+[username]
+style_user = 'white bold'
+style_root = 'black bold'
+format = '[:$user ]($style bg:#c4265e)'
+disabled = false
+show_always = true
+
+[hostname]
+ssh_only = false
+ssh_symbol = "🛸"
+style = "fg:#e3e5e5 bg:#c4265e"
+format = '[$ssh_symbol $hostname]($style)'
+# trim_at = '.companyname.com'
+# detect_env_vars = ['!notshow', 'SSH_CONNECTION']
+disabled = false
+
+[battery]
+full_symbol = "🔋"
+charging_symbol = "⚡️"
+discharging_symbol = "💧"
+# format = '[$symbol$percentage]($style) '
+format = "[ $symbol]($style)"
+disabled = false
+[[battery.display]]
+threshold = 10
+style = "fg:#e3e5e5 bg:#ff8000"
+
+# second -------------------------------------------------------------------------------------
+[directory]
+style = "fg:#000000 bg:#769ff0"
+truncation_length = 5
+read_only=""
+read_only_style="fg:#c4265e bg:#769ff0"
+truncation_symbol = "…/"
+format="[ $read_only]($read_only_style)[ $path ]($style)"
+
+[directory.substitutions]
+"Documents" = " "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+
+[git_branch]
+symbol = ""
+style = "bg:#394260"
+format = '[[ $symbol $branch ](fg:#769ff0 bg:#394260)]($style)'
+
+[git_status]
+style = "bg:#394260"
+format = '[[($all_status$ahead_behind )](fg:#769ff0 bg:#394260)]($style)'
+
+
+[time]
+disabled = false
+time_format = "%m-%d %R" # Hour:Minute Format
+style = "bg:#1d2230"
+format = '[[  $time ](fg:#a0a9cb bg:#1d2230)]($style)'
+
+
+[character]
+success_symbol="[❯](bold green)"
+error_symbol="[❯](bold red)"
+vicmd_symbol="[❮](bold green)"
+
+
+# right_format
+[jobs]
+symbol = "✦"
+# style = "fg:blue bg:#ffb86c"
+number_threshold = 2
+symbol_threshold = 1
+format = "[$symbol$number]($style)"
+
+[cmd_duration]
+format = '[\[$duration\]](yellow)'
+min_time = 1
+show_milliseconds = true
+
+
+# code environment
+[container]
+symbol = ""
+style = "bg:#212736"
+format = '[[ $symbol ](fg:#769ff0 bg:#212736)]($style)'
+
+[nodejs]
+symbol = ""
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+
+[rust]
+symbol = ""
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+
+[golang]
+symbol = "ﳑ"
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+
+[php]
+symbol = ""
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+
+[python]
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+
+[conda]
+style = "bg:#212736"
+format = '[[ $symbol ($environment) ](fg:#769ff0 bg:#212736)]($style)'

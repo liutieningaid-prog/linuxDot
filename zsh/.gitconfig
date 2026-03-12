@@ -1,0 +1,10 @@
+[user]
+	name = test-ning
+	email = aaa@aaa.com
+[credential "helperselector"]
+	selected = manager
+[credential "http://phgit.opsp.tk:18090"]
+	provider = generic
+[core]
+	autocrlf = false
+	safecrlf = warn
