@@ -63,8 +63,16 @@ pacstrap /mnt networkmanager vim sudo # amd-ucode intel-ucode
 
 ## 交换空间
 ```bash
+# btrfs
 btrfs filesystem mkswapfile --size 4g --uuid clear /mnt/swap/swapfile
 swapon /mnt/swap/swapfile
+genfstab -U /mnt > /mnt/etc/fstab
+
+# 其他
+dd if=/dev/zero of=/mnt/swapfile bs=1M count=8192 status=progress
+chmod 600 /mnt/swapfile
+mkswap /mnt/swapfile
+swapon /mnt/swapfile
 genfstab -U /mnt > /mnt/etc/fstab
 ```
 
@@ -73,10 +81,6 @@ genfstab -U /mnt > /mnt/etc/fstab
 ```bash
 cp /etc/pacman.conf  /mnt/etc/pacman.conf 
 arch-chroot /mnt
-
-vim /etc/pacman.conf
-[archlinuxcn]
-Server = https://repo.archlinuxcn.org/$arch
 
 ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 hwclock --systohc #系统时钟写入主板硬件时钟
@@ -173,12 +177,18 @@ vim /etc/sudoers
 
 ## 安装字体与显卡驱动
 ```sh
-sudo pacman -S wqy-zenhei  noto-fonts-emoji ttf-hack-nerd ttf-liberation openssh vim linux-headers # noto-fonts
+sudo pacman -S openssh vim linux-headers 
+# intel
 sudo pacman -S mesa mesa-utils vulkan-mesa-layers
 sudo pacman -S vulkan-intel lib32-vulkan-intel vulkan-tools 
 sudo pacman -S libvdpau-va-gl  #将ffmpeg对nvidia的以来转移到intel gpu上
 sudo pacman -S intel-gpu-tools # gputop 查看gpu使用
 # sudo pacman -S xf86-video-intel intel-media-driver
+
+# amd AMD Radeon 680M [Integrated]
+pacman -S --needed mesa lib32-mesa xf86-video-amdgpu vulkan-radeon lib32-vulkan-radeon
+pacman -S opencl-mesa lib32-opencl-mesa
+
 
 ## 虚拟机下安装驱动Virtio
 sudo pacman -S qemu-guest-agent xf86-video-qxl spice-vdagent mesa vulkan-intel vulkan-virtio vulkan-tools virglrenderer
@@ -198,12 +208,12 @@ eglinfo -B
 glxinfo | grep "OpenGL renderer"
 ```
 
-## 编辑sudo权限
+## paru 与 font
 ```sh
 pacman -Sy
 pacman -S archlinuxcn-keyring 
 pacman -S paru 
-pacman -S ttf-maplemono ttf-maplemono-nf-unhinted ttf-maplemono-nf-cn-unhinted
+pacman -S wqy-zenhei  noto-fonts-emoji ttf-hack-nerd ttf-liberation ttf-maplemono ttf-maplemono-nf-unhinted ttf-maplemono-nf-cn-unhinted # noto-fonts
 ```
 
 
