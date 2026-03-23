@@ -1,0 +1,9 @@
+core:
+  trash:
+    strategy: auto      # or "xdg" or "legacy"
+                        # Strategy determines which trash specification to use.
+
+    gomi_dir: ~/.cache/trash   # Path to store trashed files.
+                        # Supports environment variable expansion like $HOME or ~.
+                        # If empty, defaults to ~/.gomi.
+                        # This config is only available on "legacy", "auto" trash strategy

@@ -1,0 +1,18 @@
+patch:
+  "speller/algebra":
+    # 模糊音规则示例：
+    - derive/^([zcs])h/$1/             # zh, ch, sh => z, c, s
+    - derive/^([zcs])([^h])/$1h$2/     # z, c, s => zh, ch, sh
+
+    - derive/([aei])n$/$1ng/           # en => eng, in => ing
+    - derive/([aei])ng$/$1n/           # eng => en, ing => in
+
+    # - derive/([iu])an$/$1ang/          # uan => uang, ian => iang
+    # - derive/([iu])ang$/$1an/          # uang => uan, iang => ian
+
+    # - derive/([aeio])ng$/$1n/          # ang => an, eng => en, ing => in, ong => on
+    # - derive/([aeio])n$/$1ng/          # an => ang, en => eng, in => ing, on => ong
+
+    # 更多规则可以自行添加...
+    # 注意：一定要把这些 derive 规则放在原本 algebra 规则的前面或者完全覆盖
+    # 雾凇拼音自带了简拼规则，建议直接在原本的 algebra 列表基础上进行 patch

@@ -1,0 +1,26 @@
+patch:
+  # 这里的 rime_ice_suggestion 为雾凇方案的默认预设
+  __include: rime_ice_suggestion:/
+  patch:
+  "menu/page_size": 7
+  "schema_list":
+    - schema: rime_ice
+  "switcher/hotkeys":
+    - F4
+  "punctuator/half_shape/.": "."
+  "punctuator/half_shape/,": ", "
+  "punctuator/half_shape/\"": { commit: "\"" }
+  "punctuator/half_shape/'": { commit: "'" }
+  "punctuator/half_shape/`": "`"
+  # 注意：[ ] 这种符号在 YAML 中有特殊含义，建议加引号
+  "punctuator/half_shape/[" : { commit: "[" }
+  "punctuator/half_shape/]" : { commit: "]" }
+  "punctuator/half_shape/{" : { commit: "{" }
+  "punctuator/half_shape/}" : { commit: "}" }
+  "punctuator/half_shape/!" : { commit: "!" }
+  "punctuator/half_shape/_" : { commit: "_" }
+  "punctuator/half_shape/;" : { commit: "; " }
+  "punctuator/half_shape/:" : { commit: ":" }
+  "punctuator/half_shape/?" : { commit: "?" }
+  "punctuator/half_shape/<" : { commit: "<" }
+  "punctuator/half_shape/>" : { commit: ">" }
