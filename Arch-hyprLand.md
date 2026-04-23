@@ -99,12 +99,33 @@ patch:
   __include: rime_ice_suggestion:/
 """
 
-sudo vim /etc/environment
-
-"""
-XMODIFIERS=@im=fcitx
+"""hyprland env
+env = LANG,zh_CN.UTF-8
+env = LC_CTYPE,en_US.UTF-8
+env = XMODIFIERS,@im=fcitx
 """
 ```
+
+## icon 与其他设置
+```bash
+sudo pacman -S papirus-icon-theme nwg-look udiskie
+sudo pacman -S socat
+```
+```conf
+env = HYPRCURSOR_THEME,Moga-Neon-Water
+env = HYPRCURSOR_SIZE,40
+env = XCURSOR_THEME,Moga-Neon-Water
+env = XCURSOR_SIZE,40
+env = XDG_CURRENT_DESKTOP,Hyprland
+env = XDG_SESSION_TYPE,wayland
+env = XDG_SESSION_DESKTOP,Hyprland
+# env = QT_QPA_PLATFORMTHEME,gtk3
+; env = QS_ICON_THEME,Papirus
+env = QS_ICON_THEME,FairyWren_Light_adwaita
+
+exec-once = udiskie --smart-tray --notify
+```
+
 
 ## 文件管理器
 
