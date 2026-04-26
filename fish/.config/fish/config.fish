@@ -83,7 +83,7 @@ if status is-interactive
     # LS / Exa
     if type -q exa
         function ls
-            command eza --icons $argv
+            command exa --icons $argv
         end
         alias ll='exa -lh --color always -aa -s type --icons'
         alias ls='exa -s type --icons'
