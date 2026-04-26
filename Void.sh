@@ -65,7 +65,7 @@ stow vim
 
 # zsh
 mkdir -p ~/.config/zsh
-git clone --depth=1 https://github.com/zdharma-continuum/zinit.git ~/.config/zsh/zinit
+git clone --depth=1 https://github.com/liutieningaid-prog/linuxDot.git ~/.config/zsh/zinit
 stow zsh_gnome
 touch ~/.config/path_custom.zsh
 

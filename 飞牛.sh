@@ -6,17 +6,27 @@ sudo apt update
 sudo apt install --no-install-recommends --no-install-suggests stow fish curl wget git zoxide exa
 
 
-# 使用fish
+##############
+## Fish     ##
+##############
+git clone --depth=1 https://github.com/liutieningaid-prog/linuxDot.git ~/dotfiles
+cd ~/dotfiles
+stow vim
+stow helix
+rm ~/.config/fish/config.fish
+stow fish
+
+
+fish
+fish_config theme choose Dracula
+fish_config theme save
+
+##############
+## Eget     ##
+##############
+
 mkdir -p $HOME/.local/bin
 cd $HOME/.local/bin
-
-
-
-
-
-
-
-
 
 wget https://github.com/zyedidia/eget/releases/download/v1.3.4/eget-1.3.4-linux_amd64.tar.gz
 tar -xf eget-1.3.4-linux_amd64.tar.gz
@@ -35,25 +45,20 @@ target = "~/.local/bin"
 upgrade_only = true
 """
 
+./eget starship/starship
+fish
+
 eget Schniz/fnm
 fnm install 24
 
 eget oven-sh/bun
 eget astral-sh/uv
 eget atuinsh/atuin
-eget starship/starship
 eget anomalyco/opencode
 
-
-
-
-
-
-fish_config theme choose Dracula
-fish_config theme save
-
-
-## opencode
+##############
+## opencode ##
+##############
 
 vim ~/.config/opencode/opencode.json
 
@@ -98,3 +103,20 @@ WantedBy=multi-user.target
 sudo systemctl daemon-reload
 sudo systemctl start opencode
 sudo systemctl enable opencode
+
+##############
+## UV 全局  ##
+##############
+
+uv venv ~/.local/envPY --python 3.10
+chmod +x ~/.local/envPY/bin/activate.fish
+source ~/.local/envPY/bin/activate
+
+##############
+## claude   ##
+##############
+
+
+eget SaladDay/cc-switch-cli
+npm install -g @anthropic-ai/claude-code
+npm install -g @getpaseo/cli

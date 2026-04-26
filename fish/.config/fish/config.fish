@@ -74,7 +74,7 @@ if status is-interactive
 
     # Zoxide
     if type -q zoxide
-        zoxide init fish --cmd cd | source
+        zoxide init fish | source
     end
 
     ### 别名 (Aliases)
@@ -107,6 +107,14 @@ if status is-interactive
     else
         alias mv='mv -i'
     end
+
+
+    # uv (Python 虚拟环境管理)
+    if test -f "$HOME/.local/envPY/bin/activate.fish"
+        chmod +x "$HOME/.local/envPY/bin/activate.fish"
+        source "$HOME/.local/envPY/bin/activate.fish"
+    end
+
 
     ### 函数 (Functions)
     # Yazi 快速切换目录
