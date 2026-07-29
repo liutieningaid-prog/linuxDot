@@ -10,6 +10,7 @@ if status is-interactive
 
     # 基础路径
     fish_add_path $HOME/.local/bin
+    fish_add_path $HOME/.local/npm-global/bin
 
     ### xbps (Void Linux)
     if type -q xbps-install
