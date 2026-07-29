@@ -65,7 +65,7 @@ stow vim
 
 # zsh
 mkdir -p ~/.config/zsh
-git clone --depth=1 https://github.com/zdharma-continuum/zinit.git ~/.config/zsh/zinit
+git clone --depth=1 https://github.com/liutieningaid-prog/linuxDot.git ~/.config/zsh/zinit
 stow zsh_gnome
 touch ~/.config/path_custom.zsh
 
@@ -84,11 +84,8 @@ cd ~
 mkdir -p ~/.ssh
 echo "# thinkbook" >> ~/.ssh/authorized_keys
 echo "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDcyPDkNkkzMfm+yZYGN6jyxAY09xQV8rkngYd7TAlrs tom@tom.tom" >> ~/.ssh/authorized_keys
-echo "# conestoga" >> ~/.ssh/authorized_keys
-echo "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHxDqMbKbKljkIkaMkn5nezfA4Uziy7TXZymDpTzQgts tom@202404" >> ~/.ssh/authorized_keys
-echo "# office365" >> ~/.ssh/authorized_keys
-echo "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHxDqMbKbKljkIkaMkn5nezfA4Uziy7TXZymDpTzQgts tom@202404" >> ~/.ssh/authorized_keys
-echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6Jxi836pB6Fgw/wHlzPGCGxi002RGHUwaFcmS1CyXMJh5L8YwQacIxTHNR80CZSD/gfxBZww07Z16fyYpQ9m3Bh3Z0Ikv/Pa5VGdJzEoehOijyyo819vVZC5MgYOqxhkQhmNBwPBzTiSonMFGqHuLyW2oIunsXBW4nUtLurLjOO+J1IavQuOJM5jjMeqy3lCyTeXibEdPjOT68hNzfvitj9dzRJ715VnFUSJJOnbr9PYCAelvuRH6xkIHvIG0P4CAhAyXc31S4aV3flv0zF5Or5jbjYbdI6qHp2GbjA393F6JnwkzVnC8/piObCS70BHbzkO0DR5J1aiyd9Nnfhlp ssh-key-2024-04-08" >> ~/.ssh/authorized_keys
+echo "# GEMAndGithub" >> ~/.ssh/authorized_keys
+echo "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG+l6KWoY4zOMbyKV0YgwyEZt91dBg/R2unvbkuNCC/Y liutiening.aid@gmail.com" >> ~/.ssh/authorized_keys
 
 # brew
 cd ~

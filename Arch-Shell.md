@@ -30,9 +30,9 @@ bashit disable alias all
 cd dotfiles
 stow vim
 stow helix
+rm ~/.config/fish/config.fish
 stow fish
 ```
-
 
 ## 开发环境
 ```bash
