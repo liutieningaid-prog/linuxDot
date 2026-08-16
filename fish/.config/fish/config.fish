@@ -86,8 +86,8 @@ if status is-interactive
         function ls
             command exa --icons $argv
         end
-        alias ll='exa -lh --color always -aa -s type --icons'
-        alias ls='exa -s type --icons'
+        alias ll='exa -lh --color always -aa -s type --icons auto'
+        alias ls='exa -s type --icons auto'
         alias tree='exa -T --icons -L 2 -s type'
         alias lst='exa -T --icons -L 2 -s type'
         alias lln='exa -l --color always -aa -s type'
